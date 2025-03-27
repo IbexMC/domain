@@ -1,0 +1,17 @@
+# Name can use color, spaces, special characters. It is what the voucher item will be called
+# * REQUIRED FIELD
+name: "&fMiners haste"
+
+# Lore is displayed when hovering over the voucher. Use | for a new line, and you can use colors and special characters
+lore: "&fA sample voucher that provides|&fminers haste in the field"
+
+# Volume is how many blocks should be ADDED to the field when applied.  If your field currently has a volume of 5000, setting to 1000 would give a total of 6000
+volume: 0
+
+# A list of flags that will be available on the block (defaulted to turned off, but available to the field owner to turn on)
+# If the field already has the flag, no changes are applied
+flags:
+  - EFFECT_MINERS_HASTE_ALLOWED
+
+# If true, when the block is removed, the voucher is destroyed.  If false, removing the block will return the voucher to the user
+single_use: true

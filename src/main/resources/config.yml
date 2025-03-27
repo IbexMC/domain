@@ -1,0 +1,190 @@
+# If true, debug logging will be turned on from startup - this may result in large console.log files
+debug: false
+
+# If you wish to save to MySQL database instead of file, make sure to fill this section in with the appropriate
+# information, and set use = true
+# If you have use set to true, your MySQL database MUST be accessible or Domain will error out
+# If you do not wish to use MySQL, leave use = false, and the shop data will be saved in your data folder
+mysql:
+  # If true, Domain will attempt to use the database
+  use: false
+  # Your hostname/IP address
+  host: "your_host"
+  # Your MySQL port (default is 3306)
+  port: 3306
+  # Your database name, defaults to "ibex" but can be any existing database
+  # Database MUST exist before running
+  database: "ibex"
+  # Your username and password must have permission to your database
+  username: "your_username"
+  password: "your_password"
+
+# display_bypass_snitch will send a message to anyone with the appropriate permission if someone is in bypass mode
+display_bypass_snitch: true
+
+# bypass_log_to_file records bypass actions to a file in your plugin folder
+bypass_log_to_file: true
+
+# allow_block_build, if true, Domain blocks will be craftable
+allow_block_build: true
+
+# remove_bypass_join_quit removes the Domain Bypass flag from a player if the leave/join a server
+remove_bypass_join_quit: true
+
+# expire_blocks, if true will expire the blocks after x days (set in block configuration)
+expire_blocks: true
+
+# perm_limit_by_block, if true will apply a permission based limit on number of blocks allowed
+perm_limit_by_block: false
+
+# fly_warn_seconds is the number of seconds you have as warning before removing fly after leaving a field
+# that has ENABLE_FLY_FOR_ALLOWED
+fly_warn_seconds: 3
+
+# pvp_seconds is deprecated, but will continue to work in the absence of pvp_glow_time and pvp_no_teleport_time
+# pvp_seconds: 30
+
+# pvp_glow_time is the amount of seconds a player will glow after engaging in PVP in a
+# field with the GLOW_NONALLOWED_PLAYER_ON_PVP flag
+pvp_glow_time: 30
+
+# pvp_no_teleport_time is the amount of seconds a player will not be allowed to teleport after engaging
+# in pvp in a field with PREVENT_PVP_TELEPORT_FROM or PREVENT_PVP_TELEPORT_TO flags
+pvp_no_teleport_time: 30
+
+# domain_shop is a true/false flag for if the /domain buy command should be used
+# The buy price must be saved in the block configuration as well in order to list the block
+domain_shop: true
+
+# display_name is the tag used when sending messages to a player
+display_name: "&6[&fDomain&6]&r"
+
+# default_name is the name applied to a new field.  You can use the following substitutions:
+# <%player%> = Player Name
+# <%type%> = Block Type
+default_name: "<%player%>'s <%type%>"
+
+# default_welcome is the welcome message applied to a new field.  You can use the following substitutions:
+# <%player%> = Player Name
+# <%type%> = Block Type
+default_welcome: "Entering <%player%>'s <%type%> field"
+
+# default_farewell is the farewell message applied to a new field.  You can use the following substitutions:
+# <%player%> = Player Name
+# <%type%> = Block Type
+default_farewell: "Leaving <%player%>'s <%type%> field"
+
+# blocked_commands are commands that are blocked if the appropriate flag is assigned to a field
+blocked_commands:
+  home:
+    - /ehome
+    - /essentials:ehome
+    - /essentials:home
+    - /home
+    - /sethome
+    - /esethome
+    - /essentials:sethome
+    - /essentials:esethome
+    - /createhome
+    - /essentials:createhome
+    - /essentials:ecreatehome
+  teleport:
+    - /tpa
+    - /tpahere
+    - /tpaall
+    - /tpaccept
+    - /tpcancel
+    - /tpall
+    - /tpask
+    - /tpdeny
+    - /tp2p
+    - /essentials:tpa
+    - /essentials:tpahere
+    - /essentials:tpaall
+    - /essentials:tpaccept
+    - /essentials:tpcancel
+    - /essentials:tpall
+    - /essentials:tpask
+    - /essentials:tpdeny
+    - /essentials:tp2p
+    - /essentials:etpa
+    - /essentials:etpahere
+    - /essentials:etpaall
+    - /essentials:etpaccept
+    - /essentials:etpcancel
+    - /essentials:etpall
+    - /essentials:etpask
+    - /essentials:etpdeny
+    - /essentials:etp2p
+    - /ejump
+    - /essentials:jump
+    - /essentials:ejump
+    - /jump
+    - /back
+    - /eback
+    - /essentials:back
+    - /essentials:eback
+  custom1:
+    - /duty
+  custom2:
+    - /suicide
+  custom3:
+    - /spawn
+  custom4:
+    - /duty
+    - /suicide
+    - /spawn
+
+# If true, when a player runs /domain me - they'll have an option to teleport to the field
+allow_self_teleport_to_field: false
+
+# If true, idle and who-in kicks will always send the player to spawn
+field_kick_direct_to_spawn: false
+
+# Number of minutes between a new field being placed and the idle kick / kick command being accessible
+new_field_kick_cooldown: 10
+
+# Number of seconds between checking if someone is idle
+idle_cycle_seconds: 20
+
+# Number of times the idle timer runs before considering someone idle
+# If idle_cycle_seconds = 20 and idle_cycles_before_kick = 6, then 20 * 6 = 120 seconds
+# So if someone does not change their location in 120 seconds, they are considered idle
+idle_cycles_before_kick: 6
+
+# If true, when a player goes outside the upper and minimum heights of the world, they will be teleported
+# away.  Either to void_location (below) if it is set, or their bed spawn if it exists, otherwise to
+# to the world spawn
+void_check: true
+
+# Location to teleport the player to if they leave the upper/lower bounds of the world
+# MUST be in the format "WORLDNAME:X:Y:Z" for example: "world:-83:100:77"
+void_location: "world:-83:90:77"
+
+# PlaceholderAPI update time is the number of seconds that elapse between checking
+# for updated values.  For example, if set to 10, every 10 seconds, every online
+# player will have their values updated for PlaceholderAPI enabled plugins to pull
+# from.
+# Default is 10 (seconds), if you don't use PlaceholderAPI, set to -1 or remove.
+papi_update_time: 10
+
+# This is the number of blocks in which a magnet will pull from
+# This is the RADIUS - it will pull these blocks in all directions
+magnet_range: 5
+
+# Dynmap Support
+# enabled: true/false - If true, dynmap support is enabled if it exists on the server
+# line_hex_color: This is the default color of the outline for domain fields
+# fill_hex_color: This is the default color of the fill for domain fields
+# fill_opacity: This is the opacity of the fill for domain fields, from 0.0 to 1.0 with higher being more opaque
+# To get hex color codes, you can use a site such as https://htmlcolorcodes.com/
+# show_marker: true/false - If true, will show a marker with the field name
+# marker_icon: The icon to use for the field - the marker will always show at the block location
+# To get valid icon names, see the Dynmap Wiki - https://github.com/webbukkit/dynmap/wiki/Using-Markers
+dynmap:
+  enabled: true
+  line_hex_color: 8B589C
+  fill_hex_color: F7E6FC
+  fill_opacity: 0.5
+  show_marker: true
+  marker_icon: default

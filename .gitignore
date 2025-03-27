@@ -1,0 +1,7 @@
+/target/
+/idea/
+/.idea/
+.idea/libraries/Maven__io_papermc_paper_paper_api_1_17_R0_1_SNAPSHOT.xml
+.idea/libraries/Maven__org_bukkit_bukkit_1_13_1_R0_1_SNAPSHOT.xml
+.idea/misc.xml
+.idea/runConfigurations.xml

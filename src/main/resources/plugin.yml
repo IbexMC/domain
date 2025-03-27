@@ -1,0 +1,10 @@
+name: Domain
+main: com.ibexmc.domain.Domain
+version: 1.10.4
+api-version: 1.19
+softdepend: [Vault, Myriad, Bazaar, PlaceholderAPI, WorldGuard]
+commands:
+  domain:
+    description: Runs the domain commands
+    usage: /domain
+    aliases: [dom]

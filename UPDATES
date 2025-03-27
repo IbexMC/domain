@@ -1,0 +1,158 @@
+
+1.10.1
+Bug fix that prevented using the Domain store if allow_block_build: true
+Added miningrights.yml to new installs
+Added better error handling when creating Data folder
+Added domain.teleport permission to allow users to teleport back to their home blocks
+
+1.10.0
+
+Removed internal functions and using common ibex library (shaded)
+Added MySQL functionality
+Removed redundant code
+Marked domain config as Legacy with a new format to come
+Code cleanup
+
+1.9.17
+Added PREVENT_GROW_ALL flag - prevents all growables
+
+
+1.9.15
+
+
+1.9.14
+
+Added particle support
+Block config now has visualization: [CORNERS|CUBE|PARTICLE_CUBE|PARTICLE_RING|RING]
+  <block>.yml
+  # Visualization type.  Only the following options will work, if none of these are selected, CUBE is chosen as default
+  # CUBE, RING, CORNERS, PARTICLE_CUBE, PARTICLE_RING
+  visualization: PARTICLE_CUBE
+
+PAPI Support added (total_blocks, current_field)
+  config.yml
+  # PlaceholderAPI update time is the number of seconds that elapse between checking
+  # for updated values.  For example, if set to 10, every 10 seconds, every online
+  # player will have their values updated for PlaceholderAPI enabled plugins to pull
+  # from.
+  # Default is 10 (seconds), if you don't use PlaceholderAPI, set to -1 or remove.
+  papi_update_time: 10
+
+PREVENT_SPAWN_WARDEN flag added
+  flags.yml
+  PREVENT_SPAWN_WARDEN:
+    name: "&bPrevent Warden Spawning"
+    lore: "&fPrevents Warden from spawning in the field"
+    icon_on: LIME_STAINED_GLASS_PANE
+    icon_off: RED_STAINED_GLASS_PANE
+    locked: false
+
+ANIMAL_MAGNET flag added
+  flags.yml
+  ANIMAL_MAGNET:
+    name: "&dAnimal Magnet"
+    lore: "&fSets a point in the field as an animal magnet"
+    icon_on: LIME_STAINED_GLASS_PANE
+    icon_off: RED_STAINED_GLASS_PANE
+    locked: false
+
+MONSTER_MAGNET flag added
+  flags.yml
+  MONSTER_MAGNET:
+    name: "&dMonster Magnet"
+    lore: "&fSets a point in the field as a monster magnet"
+    icon_on: LIME_STAINED_GLASS_PANE
+    icon_off: RED_STAINED_GLASS_PANE
+    locked: false
+
+Add the following into gui.yml under the gui root:
+
+  magnet:
+    material: IRON_INGOT
+    name: "&bMagnet"
+    lore: "&fGives a magnet wand to set the|&fmagnet location of the field"
+    enabled: true
+  magnet_disabled:
+    material: BARRIER
+    name: "&4Magnet disabled - Flag not set"
+    lore: "&fYou must set a Magnet flag|&fin order to access the|&fmagnet to command"
+    enabled: true
+
+Add the following to lang.yml
+saved_magnet_domainblock: "&aSUCCESS &f- Your magnet location has been set to <%location%>"
+magnet_set_cancel: "&4Magnet location setting has been cancelled"
+magnet_set_notset: "&4Magnet location has not been set.  To cancel, right click the Domain Block with an open hand"
+magnet_set_ok: "&4Magnet location set.  Left click the Domain Block with the wand to save"
+magnet_wand_given: "&aYou have been given a magnet wand.  Left click the block you wish to set as the magnet.  When selected, left click the Domain block with the wand to set the location"
+magnet_wand_lore: "&f&lInstructions|&fLeft click the location you wish to set as magnet|&fthen left click the Domain Block to save|&fRight click the Domain Block with an empty hand to cancel"
+magnet_wand_name: "&bDomain Magnet Wand"
+magnet_wand_not_given: "&cFAILED &f- Your main hand must be empty"
+
+Removed entries from config.yml
+  config.yml
+    visualize_corners
+    visualize_ring
+
+Added default_new_name to block configs
+  <block>.yml
+  # Default name for new field.  You can use & color codes, and can (but do not have to) use the following placeholders:
+  # <%player%> - Player name of who created the field
+  # <%type%> - The field type (from display_name above)
+  default_new_name: "<%player%>'s <%type%> field"
+
+1.9.13
+Bug fix - Max volume not being returned correct
+Bug fix - Domain debug was not turning off
+
+1.9.12
+Prevents players from leaving the upper/lower heights of the world.  Will teleport the player to void_location, or bed, or spawn.
+- Applies feather falling and slowness for 3 seconds
+- Added void_check to config.yml
+- Added void_location to config.yml
+Added support for Mangrove doors, gates, trapdoors, buttons, pressure plates
+Added support for Tadpole buckets
+Added voucher support
+- Vouchers can be used to add additional volume or flags to a field
+- The voucher key is saved in the field data, when loaded, these additions from the vouchers will be applied on top of the defaults
+- If the voucher is removed from the Vouchers folder, the voucher does not load, and these additions can be removed
+  - Benefits of this would be things like temporarily allowing players to enable healing effects inside their fields over a period of time
+Cleanup
+- Removed deprecated command functions
+- Removed deprecated API calls from 1.9.11
+- Removed deprecate Vault functions
+- Removed unused functions
+- Corrected documentation of API functions
+
+
+1.9.11
+Bug fixes
+Code cleanup
+Removed duplicate functions
+debug_to_file has been removed
+Deprecated API calls have been removed
+api.FieldFunctions, api.FlagFunctions, api.ItemFunctions, api.MiscFunctions, api.PlayerFunctions have all been deprecated
+API functions now available via Domain.instance().api().<function name>
+
+1.9.10
+
+PREVENT_BREAK no longer protects harvesting crops
+PREVENT_BUILD no longer prevents planting crops
+
+New Flag:
+PREVENT_CROP_PLANTING_BY_NONALLOWED - Prevents crops being planted by non-allowed players
+
+Add the following to flags.yml:
+
+  PREVENT_CROP_PLANTING_BY_NONALLOWED:
+    name: "&bPrevent Crop Planting"
+    lore: "&fPrevents Non-Allowed Players from planting crops"
+    icon_on: LIME_STAINED_GLASS_PANE
+    icon_off: RED_STAINED_GLASS_PANE
+    locked: false
+
+Add the following to lang.yml:
+
+  crop_planting_refused: "&4You cannot plant crops here"
+
+
+Bug fix: Removing a player from an admin block could cause a null owner error
